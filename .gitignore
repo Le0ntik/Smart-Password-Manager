@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# PyCharm
+.idea/
+
+# Environment variables
+.env
+
+# Secrets and encrypted user data
+master.key
+vault.enc
+*.key
+*.enc
+
+# Backups
+backup.bin
+backups/
+data/
+server/server_backups/
+*.bin
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
