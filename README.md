@@ -45,11 +45,11 @@ Telegram Bot  → Flask API → Vault → CryptoEngine → vault.enc
 
 ### Web Interface
 
-![Web Interface](docs/screenshots/web-interface.png)
+![web-interface.png](doc/screenshots/web-interface.png)
 
 ### Telegram Bot
 
-![Telegram Bot](docs/screenshots/telegram-bot.png)
+![telegram-bot.png](doc/screenshots/telegram-bot.png)
 
 ## Installation
 
