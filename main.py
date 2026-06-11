@@ -4,11 +4,11 @@ from crypto.crypto_engine import CryptoEngine
 from client.backup_client import send_backup
 
 try:
-    key = open("master.key", "rb").read()
+    key = open("data/master.key", "rb").read()
     print("Ключ загружен.")
 except:
     key = CryptoEngine.generate_key()
-    open("master.key", "wb").write(key)
+    open("data/master.key", "wb").write(key)
     print("Создан новый ключ и сохранён в master.key")
 
 crypto = CryptoEngine(key)

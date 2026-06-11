@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .
+    container_name: spm_web
+    command: python api_server.py
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+
+  bot:
+    build: .
+    container_name: spm_bot
+    command: python TG_BOT.py
+    env_file:
+      - .env
+    depends_on:
+      - web
+    environment:
+      - API_URL=http://web:5000
+    volumes:
+      - ./data:/app/data

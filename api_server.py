@@ -2,13 +2,18 @@ from flask import Flask, request, jsonify, render_template
 from vault.vault import Vault
 from vault.entry import Entry
 from crypto.crypto_engine import CryptoEngine
-
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+load_dotenv()
+
+MASTER_KEY_PATH = os.getenv("MASTER_KEY_PATH", "data/master.key")
+VAULT_PATH = os.getenv("VAULT_PATH", "data/vault.enc")
 
 # Загружаем ключ шифрования
-with open("master.key", "rb") as f:
+with open(MASTER_KEY_PATH, "rb") as f:
     key = f.read()
 
 
@@ -17,7 +22,7 @@ crypto = CryptoEngine(key)
 
 
 # Создаём хранилище
-vault = Vault(crypto)
+vault = Vault(crypto, filename=VAULT_PATH)
 vault.load()
 
 

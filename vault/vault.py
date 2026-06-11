@@ -4,7 +4,7 @@ from .entry import Entry
 from crypto.crypto_engine import CryptoEngine
 
 class Vault:
-    def __init__(self, crypto: CryptoEngine,filename = "vault.enc"):
+    def __init__(self, crypto: CryptoEngine,filename = "data/vault.enc"):
         self.crypto = crypto
         self.filename = filename
         self.entries = []
@@ -24,9 +24,13 @@ class Vault:
             f.write(encrypted)
 
     def load(self):
-        with open(self.filename, "rb") as f:
-            encrypted = f.read()
+        try:
+            with open(self.filename, "rb") as f:
+                encrypted = f.read()
 
             decrypted_json = self.crypto.decrypt(encrypted).decode("utf-8")
             data = json.loads(decrypted_json)
             self.entries = [Entry(**d) for d in data]
+
+        except FileNotFoundError:
+            self.entries = []

@@ -16,8 +16,8 @@ env/
 .env
 
 # Secrets and encrypted user data
-master.key
-vault.enc
+data/master.key
+data/vault.enc
 *.key
 *.enc
 

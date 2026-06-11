@@ -30,6 +30,8 @@ The project demonstrates basic object-oriented programming principles, encrypted
 * requests
 * cryptography / Fernet
 * Git / GitHub
+* Docker
+* Docker Compose
 
 
 ## Architecture
@@ -88,6 +90,63 @@ API_URL=http://127.0.0.1:5000
 ```
 
 The `.env` file is ignored by Git and should not be uploaded to GitHub.
+
+## Running with Docker
+
+The project can be started with Docker Compose. This will run two services:
+
+* `web` — Flask API and web interface;
+* `bot` — Telegram bot.
+
+Before running the project, create a `.env` file in the project root based on `.env.example`:
+
+```env
+BOT_TOKEN=your_telegram_bot_token_here
+API_URL=http://127.0.0.1:5000
+MASTER_KEY_PATH=data/master.key
+VAULT_PATH=data/vault.enc
+```
+
+For Docker Compose, the bot uses the internal service URL:
+
+```env
+API_URL=http://web:5000
+```
+
+The encrypted vault files are stored in the local `data/` directory:
+
+```text
+data/
+├── master.key
+└── vault.enc
+```
+
+These files are not included in the repository.
+
+To build and start the project, run:
+
+```bash
+docker compose up --build
+```
+
+After startup, the web interface will be available at:
+
+```text
+http://127.0.0.1:5000
+```
+
+To stop the containers, press:
+
+```text
+Ctrl + C
+```
+
+Or run:
+
+```bash
+docker compose down
+```
+
 
 ## Running the Project
 
