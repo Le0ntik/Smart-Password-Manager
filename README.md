@@ -41,6 +41,16 @@ Web UI        → Flask API → Vault → CryptoEngine → vault.enc
 Telegram Bot  → Flask API → Vault → CryptoEngine → vault.enc
 ```
 
+## Screenshots
+
+### Web Interface
+
+![Web Interface](docs/screenshots/web-interface.png)
+
+### Telegram Bot
+
+![Telegram Bot](docs/screenshots/telegram-bot.png)
+
 ## Installation
 
 Clone the repository:
